@@ -162,6 +162,9 @@ docker-compose down -v
 ## 👥 Team
 
 - Darshan Gupta
+- Kaustuv Medhi
+- Swapnil Borgohain
+- Arup Saud
 
 ## 📄 License
 
