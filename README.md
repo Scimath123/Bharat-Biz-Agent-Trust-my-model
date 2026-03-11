@@ -1,176 +1,301 @@
-# 🇮🇳 Bharat Biz-Agent
+# 🇮🇳 Bharat Biz-Agent  
+### AI-Powered Business Assistant for Retail
 
-AI-powered chatbot assistant for Indian businesses to search products, place orders, and manage inventory using natural language in English and Hindi.
+Bharat Biz-Agent is an AI-driven conversational assistant designed for businesses to search products, place orders, and manage inventory using natural language.  
+The system combines LLM-powered reasoning with structured database queries, allowing businesses to interact with their inventory using simple conversational commands in English and Hindi.
 
-## 🚀 Features
+The project demonstrates how modern AI systems can be integrated with backend APIs and databases to automate business workflows.
 
-- 🤖 Natural language processing using Google Gemini AI
-- 🛍️ Product search and browsing
-- 📦 Order placement and tracking
-- 💬 Bilingual support (English & Hindi)
-- 📊 Order history management
-- 🎨 Beautiful WhatsApp-inspired UI
+---
 
-## 🛠️ Tech Stack
+# 🚀 Key Features
 
-- **Backend**: FastAPI (Python)
-- **AI Model**: Google Gemini 2.5 Flash
-- **Database**: MySQL
-- **Frontend**: HTML/CSS/JavaScript
-- **Containerization**: Docker
+### 🤖 AI Conversational Assistant
+- Natural language interaction powered by Google Gemini
+- Understands business queries and converts them into structured actions
 
-## 📋 Prerequisites
+### 🛍️ Smart Product Discovery
+Users can search products using conversational queries like:
+
+```
+Show me laptops
+Find electronics under budget
+I want to buy a phone
+```
+
+### 📦 Order Management
+The system allows users to:
+- Place product orders
+- Track existing orders
+- View order history
+
+### 🌐 Bilingual Interaction
+Supports natural language queries in:
+
+- English
+- Hindi
+
+### 📊 Database-Driven Business Operations
+Inventory and orders are stored in a structured relational database using MySQL.
+
+### 🎨 Interactive UI
+Frontend interface inspired by WhatsApp-style conversational UI for intuitive interaction.
+
+---
+
+# 🛠️ Tech Stack
+
+| Layer | Technology |
+|------|-------------|
+| Backend API | FastAPI (Python) |
+| AI Model | Google Gemini |
+| Database | MySQL |
+| Frontend | HTML / CSS / JavaScript |
+| Containerization | Docker |
+
+---
+
+# 🧠 My Contributions
+
+I played a major role in designing and implementing the backend intelligence layer of the system.
+
+### Backend Architecture
+- Designed and implemented the entire backend API using FastAPI
+- Built RESTful endpoints to process chatbot queries and interact with the database
+- Implemented request validation, structured responses, and API documentation
+
+### LLM Integration
+- Developed the LLM integration layer using Google Gemini
+- Implemented prompt pipelines that convert user queries into business operations
+- Designed system prompts and user prompts to control the AI's reasoning and responses
+
+### Prompt Engineering
+Created optimized prompts enabling the AI to:
+
+- Understand business intent
+- Identify product queries
+- Convert conversations into structured database queries
+- Handle order placement logic
+
+### Database Design
+Designed the raw MySQL database schema including:
+
+**Products Table**
+- Product ID
+- Name
+- Category
+- Price
+- Description
+
+**Orders Table**
+- Order ID
+- Product ID
+- Quantity
+- Order Timestamp
+
+Also populated the database with **150+ enriched product records** to simulate real-world retail data.
+
+### AI-Database Bridge
+
+Implemented logic to connect the LLM output with backend database operations:
+
+```
+User Query → AI Intent Detection → Backend Logic → SQL Query → Response
+```
+
+This architecture allows conversational queries to directly perform real business operations.
+
+---
+
+# 📋 Prerequisites
+
+Before running the project ensure you have:
 
 - Docker Desktop installed
-- Google Gemini API key ([Get one here](https://aistudio.google.com/app/apikey))
+- A Google Gemini API Key
 
-## 🐳 Quick Start with Docker
+Get API Key:
 
-### 1. Clone the Repository
+https://aistudio.google.com/app/apikey
+
+---
+
+# 🐳 Running the Project (Docker)
+
+## 1 Clone Repository
 
 ```bash
 git clone https://github.com/darshan8bits/bharat-biz-agent.git
 cd bharat-biz-agent
 ```
 
-### 2. Set Up Environment Variables
+## 2 Create Environment File
 
-Create a `.env` file in the project root:
+Create `.env` file in the project root:
 
-```bash
-GEMINI_API_KEY=your_gemini_api_key_here
+```
+GEMINI_API_KEY=your_api_key_here
 ```
 
-### 3. Build and Run with Docker Compose
+## 3 Start Application
 
 ```bash
 docker-compose up --build
 ```
 
-This will:
-- ✅ Start MySQL database
-- ✅ Build and start the FastAPI backend
-- ✅ Initialize the database with 150+ products
-- ✅ Make the API available at `http://localhost:8000`
+This will automatically:
 
-### 4. Access the Application
+- Start MySQL database
+- Build FastAPI backend container
+- Initialize database tables
+- Load product dataset
 
-**Backend API:**
-- API: http://localhost:8000
-- API Documentation: http://localhost:8000/docs
+---
 
-**Frontend:**
-- Open `bharat-biz-frontend-BEAUTIFIED.html` in your browser
-- The frontend connects to `http://localhost:8000`
+## 4 Access the Application
 
-## 🔧 Manual Docker Build (Alternative)
+Backend API
 
-If you want to build just the backend:
-
-```bash
-# Build the image
-docker build -t bharat-biz-backend .
-
-# Run with environment variables
-docker run -p 8000:8000 \
-  -e GEMINI_API_KEY=your_key \
-  -e DB_HOST=host.docker.internal \
-  -e DB_USER=root \
-  -e DB_PASSWORD=billa \
-  -e DB_NAME=ai_db \
-  -e DB_PORT=3306 \
-  bharat-biz-backend
+```
+http://localhost:8000
 ```
 
-## 💬 Testing the Chatbot
+Interactive API Docs
 
-Try these example queries:
+```
+http://localhost:8000/docs
+```
 
-1. **Product Search:**
-   - "Show me laptops"
-   - "I'm looking for phones"
-   - "Search for electronics"
+Frontend
 
-2. **Place Order:**
-   - "I want to order a laptop"
-   - "Buy 2 phones"
-   - "Order a sofa"
+Open:
 
-3. **Order History:**
-   - "What are my recent orders?"
-   - "Show my order history"
+```
+bharat-biz-frontend-BEAUTIFIED.html
+```
 
-## 📁 Project Structure
+---
+
+# 💬 Example Queries
+
+### Product Search
+
+```
+Show me laptops
+Search electronics
+Find phones
+```
+
+### Place Orders
+
+```
+Order a laptop
+Buy 2 phones
+Place an order for a sofa
+```
+
+### Order History
+
+```
+Show my recent orders
+What did I buy last week
+```
+
+---
+
+# 📁 Project Structure
 
 ```
 bharat-biz-agent/
-├── main.py                 # FastAPI application
-├── llm.py                  # Gemini AI integration
-├── database.py             # Database operations
-├── requirements.txt        # Python dependencies
-├── Dockerfile             # Docker configuration
-├── docker-compose.yml     # Multi-container setup
-├── .env.example           # Environment variables template
-└── bharat-biz-frontend-BEAUTIFIED.html  # Frontend UI
+
+main.py
+FastAPI backend application
+
+llm.py
+Gemini AI integration and prompt logic
+
+database.py
+Database connection and SQL operations
+
+requirements.txt
+Python dependencies
+
+Dockerfile
+Docker container configuration
+
+docker-compose.yml
+Multi-container orchestration
+
+.env.example
+Environment variable template
+
+bharat-biz-frontend-BEAUTIFIED.html
+Chat UI frontend
 ```
 
-## 🔑 Environment Variables
+---
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `GEMINI_API_KEY` | Google Gemini API key | ✅ Yes |
-| `DB_HOST` | MySQL host | ✅ Yes |
-| `DB_USER` | MySQL username | ✅ Yes |
-| `DB_PASSWORD` | MySQL password | ✅ Yes |
-| `DB_NAME` | Database name | ✅ Yes |
-| `DB_PORT` | MySQL port (default: 3306) | ✅ Yes |
+# 🧪 API Endpoint
 
-## 🧪 API Endpoints
+### Chatbot API
 
-- `POST /chat` - Main chatbot endpoint
-  ```json
-  {
-    "message": "Show me laptops"
-  }
-  ```
+```
+POST /chat
+```
 
-## 🛑 Stopping the Application
+Request Example
+
+```json
+{
+ "message": "Show me laptops"
+}
+```
+
+The backend:
+
+1. Sends the message to Gemini
+2. Extracts the business intent
+3. Executes the corresponding database query
+4. Returns a structured response
+
+---
+
+# 🛑 Stopping the Application
+
+Stop containers:
 
 ```bash
 docker-compose down
 ```
 
-To remove all data:
+Remove containers and volumes:
+
 ```bash
 docker-compose down -v
 ```
 
-## 🐛 Troubleshooting
+---
 
-### Database Connection Issues
-- Ensure MySQL container is running: `docker ps`
-- Check MySQL health: `docker logs bharat-biz-mysql`
+# 👥 Team
 
-### Gemini API Errors
-- Verify your API key in `.env`
-- Check rate limits (free tier: 20-250 requests/day)
+This project was developed collaboratively as part of a team project.
 
-### Port Already in Use
-- Stop any services running on port 8000 or 3306
-- Or change ports in `docker-compose.yml`
+Team Members:
 
-## 👥 Team
+- Darshan Gupta  
+- **Kausthuv Narayan Medhi (Backend & AI Integration)**  
+- Swapnil Borgohain  
+- Arup Saud  
 
-- Darshan Gupta
-- Kaustuv Medhi
-- Swapnil Borgohain
-- Arup Saud
+---
 
-## 📄 License
+# 📄 License
 
 MIT License
 
-## 🙏 Acknowledgments
+---
+
+# 🙏 Acknowledgments
 
 - Google Gemini AI
 - FastAPI Framework
